@@ -10,6 +10,10 @@ function App() {
     { id: 4, title: "Card 4", content: "content-4" },
     { id: 5, title: "Card 5", content: "content-5" },
   ];
+
+  const cardGenerator = () => {
+    cards.push({ title: "Card Title", content: "Content" });
+  };
   return (
     <>
       <div className="card-container">
@@ -19,6 +23,7 @@ function App() {
           );
         })}
       </div>
+      <button onClick={cardGenerator}>Card Generator</button>
     </>
   );
 }
