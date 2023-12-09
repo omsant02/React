@@ -1,11 +1,11 @@
 import React from "react";
-import Course from "./Course";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div>
       <h1>Home Page</h1>
-      <a href="/course">Course</a>
+      <Link to="/course">Course</Link>
     </div>
   );
 };
