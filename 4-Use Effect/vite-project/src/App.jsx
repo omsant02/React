@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState("");
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://randomuser.me/api/");
-      const data = await res.json();
-      const jsonString = JSON.stringify(data);
-      setUser(jsonString);
-    };
-    fetchData();
-  }, []);
+    console.log("UseEffect called");
+  }, [count1, count2]);
 
-  return <>{user}</>;
+  return (
+    <>
+      <h2>{count1}</h2>
+      <button onClick={() => setCount1(count1 + 1)}>Increment Count 1</button>
+      <h2>{count2}</h2>
+      <button onClick={() => setCount2(count2 + 1)}>Increment Count 2</button>
+    </>
+  );
 }
 
 export default App;
