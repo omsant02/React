@@ -2,23 +2,22 @@ import "./App.css";
 import "./Card.css";
 import Card from "./Card";
 import { useState } from "react";
+import Form from "./Form";
 
 function App() {
-  const [cards, setCards] = useState([
-    { id: 1, title: "Card 1", content: "content-1" },
-  ]);
+  const [cards, setCards] = useState([]);
 
-  const cardGenerator = () => {
+  const cardGenerator = (name, age) => {
     const newObject = {
-      title: `Card ${cards.length + 1}`,
-      content: `content ${cards.length + 1}`,
+      title: `Name: ${name}`,
+      content: `Age: ${age}`,
     };
     setCards([...cards, newObject]);
   };
   return (
     <>
+      <Form cardGenerator={cardGenerator} />
       <div className="app">
-        <button onClick={cardGenerator}>Card Generator</button>
         <div className="card-container">
           {cards.map((card, index) => {
             return (
