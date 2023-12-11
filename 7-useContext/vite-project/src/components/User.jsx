@@ -1,9 +1,9 @@
 import UserCard from "./UserCard";
 
-const User = ({ user }) => {
+const User = () => {
   return (
     <div>
-      <UserCard user={user} />
+      <UserCard />
     </div>
   );
 };

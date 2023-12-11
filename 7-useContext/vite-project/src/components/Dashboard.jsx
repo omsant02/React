@@ -1,11 +1,11 @@
 import "./Dashboard.css";
 import User from "./UserCard";
 
-const Dashboard = ({ user }) => {
+const Dashboard = () => {
   return (
     <div>
       <h2>Dashboard</h2>
-      <User user={user} />
+      <User />
     </div>
   );
 };

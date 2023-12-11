@@ -1,5 +1,9 @@
 import "./UserCard.css";
-const UserCard = ({ user }) => {
+import userContext from "../context/userContext";
+import { useContext } from "react";
+
+const UserCard = () => {
+  const user = useContext(userContext);
   return (
     <div className="user-card">
       <h3>User Card</h3>
