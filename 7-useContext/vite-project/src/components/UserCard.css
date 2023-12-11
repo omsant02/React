@@ -1,0 +1,17 @@
+.user-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333; /* Add this line to set the font color to dark grey */
+}
+
+.user-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.user-card p {
+  margin: 5px 0;
+}

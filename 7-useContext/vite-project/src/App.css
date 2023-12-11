@@ -1,0 +1,17 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #c70039;
+  font-family: Arial, sans-serif;
+  margin-left: 850px;
+}
+
+.app h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.app div {
+  margin-bottom: 20px;
+}
