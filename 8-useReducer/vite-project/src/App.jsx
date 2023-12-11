@@ -1,39 +1,74 @@
-import { useState } from "react";
 import { useReducer } from "react";
 import "./App.css";
+import AddTask from "./AddTask";
+import TaskList from "./TaskList";
 
-const reducer = (state, action) => {
+let nextId = 3;
+const initialTasks = [
+  { id: 0, text: "Learn Frontend", done: true },
+  { id: 1, text: "Learn Backend", done: false },
+  { id: 2, text: "Learn Github", done: false },
+];
+
+const tasksReducer = (tasks, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { count: state.count + 1 };
-    case "DECREMENT":
-      return { count: state.count - 1 };
-    case "RESET":
-      return { count: 0 };
-    default:
-      throw new Error("Invalid action type");
+    case "added": {
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
+    }
+    case "deleted": {
+      return tasks.filter((t) => t.id !== action.id);
+    }
+    case "changed": {
+      return tasks.map((t) => {
+        if (t.id === action.task.id) {
+          return action.task;
+        } else {
+          return t;
+        }
+      });
+    }
   }
 };
-function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
-  const increment = () => {
-    dispatch({ type: "INCREMENT" });
+const App = () => {
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+
+  const handleAddTask = (text) => {
+    dispatch({
+      type: "added",
+      id: nextId++,
+      text: text,
+    });
   };
-  const decrement = () => {
-    dispatch({ type: "DECREMENT" });
+  const handleDelteTask = (taskId) => {
+    dispatch({
+      type: "deleted",
+      id: taskId,
+    });
   };
-  const reset = () => {
-    dispatch({ type: "RESET" });
+  const handleChangeTask = (task) => {
+    dispatch({
+      type: "changed",
+      task: task,
+    });
   };
   return (
-    <div>
-      <p>Count : {state.count}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-    </div>
+    <>
+      <h1>Welcome Back</h1>
+      <AddTask onAddTask={handleAddTask} />
+      <TaskList
+        tasks={tasks}
+        onDeleteTask={handleDelteTask}
+        onChangeTask={handleChangeTask}
+      />
+    </>
   );
-}
-
+};
 export default App;
